@@ -1,4 +1,12 @@
 class UsersController < ApplicationController
+  def create
+    @the_user = User.new
+    @the_user.username = params.fetch("the_username")
+    @the_user.save
+    
+    
+  end 
+
   def index
     matching_users = User.all
 
