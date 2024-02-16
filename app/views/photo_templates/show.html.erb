@@ -13,7 +13,7 @@
   </dt>
   <dd>
     <p>
-     <%=@the_photo.caption%>
+      <%=@the_photo.caption%>
     </p>
   </dd>
 
@@ -21,7 +21,7 @@
     Owner
   </dt>
   <dd>
-     <%=@the_photo.poster.username%>
+    <%=@the_photo.poster.username%>
 
   </dd>
 
@@ -29,7 +29,7 @@
     Posted
   </dt>
   <dd>
-      <%=@the_photo.created_at%>
+    <%=@the_photo.created_at%>
 
   </dd>
 
@@ -69,28 +69,34 @@
   </tr>
 
   <%@the_photo.comments.each do|a_comment|%>
-  <tr>
-    <td>
-      <%=a_comment.commenter.username%>
-    </td>
+    <tr>
+      <td>
+        <%=a_comment.commenter.username%>
+      </td>
 
-    <td>
-     <%=a_comment.body%>
-    </td>
+      <td>
+        <%=a_comment.body%>
+      </td>
 
-    <td>
-     <%=a_comment.created_at%>
-    </td>
-  </tr>
+      <td>
+        <%=a_comment.created_at%>
+      </td>
+    </tr>
 
-<%end%>
+  <%end%>
 </table>
 
 <h3>Add a new comment</h3>
 
-<form >
+<form action ="/add_comment" method="post">
   <label for="photo_id"> Photo ID </label>
   <input id = "photo_id" type ="text" name = "the_photo_id" value = "<%=@the_photo.id%>">
 
-  
+  <label for="author_id"> Author ID </label>
+  <input id = "author_id" type ="text" name = "the_author_id" placeholder="Enter your author ID">
+
+<label for="comment_field">Comment</label>
+  <textarea id = "comment_field" type ="text" name = "the_comment" placeholder = "Enter a comment..."></textarea>
+
+  <button> Add comment </button>
 </form>

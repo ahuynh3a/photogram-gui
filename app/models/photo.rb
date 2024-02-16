@@ -30,7 +30,9 @@ class Photo < ApplicationRecord
 
     matching_comments = Comment.where({ :photo_id => self.id })
 
-    return matching_comments
+     list_of_comments = matching_comments.order({:created_at => :desc})
+    
+    return list_of_comments
   end
 
   def likes
