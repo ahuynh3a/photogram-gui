@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
   def create
-    @the_user = User.new
-    @the_user.username = params.fetch("the_username")
-    @the_user.save
+   username_input = params.fetch("the_username")
     
+    new_user = User.new
+
+    new_user.username = username_input
     
+    new_user.save
+
+    redirect_to("/users/" + new_user.username)
+
   end 
 
   def index
@@ -23,6 +28,6 @@ class UsersController < ApplicationController
 
     @the_user = matching_usernames.first
 
-    render({:template=>"user_templates/show"})
+    redirect_to({:template=>"user_templates/show"})
   end
 end
